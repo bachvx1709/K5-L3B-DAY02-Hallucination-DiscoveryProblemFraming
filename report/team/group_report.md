@@ -8,7 +8,7 @@
 - Tên nhóm: Hallucination
 - Thành viên: xem `TEAM.md`
 - Candidate problem được chọn (1 câu): Tổng hợp báo cáo nhóm
-- Quyết định cuối: Go / Not Yet / No-Go
+- Quyết định cuối: Not Yet
 
 ---
 
@@ -252,16 +252,19 @@ TƯƠNG LAI — 7 BƯỚC - MỤC TIÊU < 40 PHÚT - 3 BƯỚC THỦ CÔNG
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+| **Actor** | Sinh viên phụ trách tổng hợp báo cáo nhóm, thường là nhóm trưởng hoặc người được giao hoàn thiện bài nộp của nhóm.|
+| **Quy trình** | Nhận các phần báo cáo riêng lẻ → kiểm tra nội dung → ghép tài liệu → chuẩn hóa định dạng và văn phong → đối chiếu rubric → xuất PDF → nộp bài.|
+| **Bottleneck** | Chuẩn hóa và rà soát báo cáo sau khi ghép nội dung, đặc biệt là định dạng không thống nhất, nội dung trùng lặp, thiếu liên kết và thiếu mục theo rubric. Trong Problem Card ban đầu, bước chuẩn hóa mất khoảng 60 phút. |
+| **Impact** | Tổng thời gian hoàn thiện báo cáo khoảng 120 phút/lần; 2/3 lần gần nhất nộp sát deadline; từng bị trừ 0,5–1 điểm do lỗi định dạng và trích dẫn.|
+| **Success Metric** (baseline → target, cách đo) | Thời gian: 120 phút → < 40 phút/lần, đo bằng bấm giờ trên các báo cáo có độ dài và độ phức tạp tương đương. **Lỗi định dạng:** mục tiêu 0 lỗi nghiêm trọng khi xuất PDF, đo bằng checklist kiểm tra. **Rubric:** mục tiêu phát hiện 100% tiêu chí bắt buộc trên bộ tài liệu thử nghiệm, đo bằng cách đối chiếu với checklist chuẩn do người kiểm tra xác nhận. **Chất lượng nội dung:** không làm sai lệch ý nghĩa hoặc số liệu gốc. |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) |AI chỉ được phân tích, phát hiện vấn đề và đề xuất chỉnh sửa; không tự tạo nội dung, số liệu, nguồn tham khảo hoặc tự quyết định xóa/sửa nội dung chuyên môn. Mọi thay đổi nội dung cần được người tổng hợp duyệt (HITL). Không tự động nộp báo cáo. |
 
 Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
 
--
+ - Nếu sử dụng template chung ngay từ đầu, liệu còn cần phát triển giải pháp mới không?   Template có thể giải quyết nhiều lỗi định dạng. Cần thử nghiệm trước và chỉ bổ sung các chức năng rà soát nội dung mà template chưa đáp ứng.
+- AI có thể sửa văn phong nhưng làm thay đổi ý nghĩa chuyên môn. Làm sao kiểm soát?  * AI chỉ đề xuất, không tự thay đổi nội dung. Người tổng hợp phải kiểm tra và phê duyệt. 
+- Nếu thành viên nộp nội dung quá muộn, chuẩn hóa nhanh hơn có giải quyết được vấn đề nộp sát deadline không? Giải pháp chỉ giảm thời gian tổng hợp sau khi nhận nội dung, không xử lý trực tiếp nguyên nhân thành viên nộp muộn.
+- Có cần Agent hay một Workflow đơn giản đã đủ? Rule xử lý định dạng, AI hỗ trợ rà soát nội dung nếu cần và con người duyệt kết quả. Chưa có lý do sử dụng Agent tự chủ.
 
 ---
 
@@ -269,102 +272,141 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-Bài của nhóm nằm ở ô:
+Bài của nhóm nằm ở ô: Workflow	
 
-Vì sao:
+Vì sao:  Các yêu cầu định dạng có thể xác định bằng quy tắc, nhưng đánh giá nội dung trùng lặp, thiếu liên kết và mức độ đáp ứng rubric cần hiểu ngữ nghĩa, quy trình có các bước xác định rõ: nhận tài liệu, kiểm tra cấu trúc, rà soát nội dung, chỉnh sửa và xuất PDF.
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 |---|---|---|---|---|
-| **No AI** (sửa quy trình) | | | | |
-| **Rule** | | | | |
-| **Workflow** | | | | |
-| **Agent** | | | | |
+| **No AI** (sửa quy trình) |Dùng template Word/Google Docs, checklist rubric và người tổng hợp tự rà soát. | Chi phí thấp, dễ áp dụng, không có rủi ro AI tạo nội dung sai. | Vẫn phải đọc và đối chiếu nội dung thủ công. | Dùng làm baseline. |
+| **Rule** | Kiểm tra heading, font, cấu trúc mục, tên file và các yêu cầu có quy tắc cố định. | Dễ triển khai, kết quả nhất quán và dễ kiểm thử. | Khó phát hiện trùng lặp ý hoặc nội dung thiếu liên kết. | Ưu tiên cho kiểm tra định dạng. |
+| **Workflow** | Rule kiểm tra cấu trúc → AI đề xuất lỗi nội dung → người tổng hợp duyệt → xuất PDF. | Phân chia trách nhiệm rõ, có kiểm soát và có thể đo hiệu quả từng bước. | Cần dữ liệu đầu vào, đánh giá chất lượng AI và thao tác review. | **Mức đề xuất nếu triển khai.** |
+| **Agent** |AI tự lựa chọn bước kiểm tra, chỉnh sửa, sử dụng công cụ và xử lý tài liệu. | Linh hoạt khi quy trình phức tạp hoặc thay đổi liên tục. | Khó kiểm soát, chi phí cao, nguy cơ tự ý thay đổi nội dung. | Không chọn. |
 
-**Mức chọn:**
+**Mức chọn:** Workflow
 
 **Vì sao không chọn mức đơn giản hơn:**
+- **No AI:** Có thể giảm lỗi định dạng, nhưng có thể chưa giảm được thời gian rà soát nội dung và đối chiếu rubric.
+- **Rule:** Hiệu quả với yêu cầu có cấu trúc, nhưng khó xử lý trường hợp hai đoạn văn trùng ý nhưng sử dụng cách diễn đạt khác nhau.
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | |
-| **Judgment** — con người cân nhắc, quyết định gì? | |
-| **Action** — hành động cuối cùng là gì, ai làm? | |
-| **Outcome** — đo kết quả bằng gì? | |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện? | |
+| **Prediction** — AI dự đoán / tạo ra gì? | Xác định những đoạn có khả năng trùng lặp ý, thiếu liên kết, chưa đáp ứng rubric hoặc có sự khác biệt đáng kể về văn phong. |
+| **Judgment** — con người cân nhắc, quyết định gì? | Người tổng hợp đánh giá đề xuất có đúng không, nội dung có thực sự thiếu hoặc trùng lặp không, việc chỉnh sửa có làm thay đổi ý nghĩa chuyên môn không. |
+| **Action** — hành động cuối cùng là gì, ai làm? |Hiển thị danh sách vấn đề kèm vị trí và gợi ý chỉnh sửa. Người dùng chấp nhận, từ chối hoặc tự sửa từng đề xuất. |
+| **Outcome** — đo kết quả bằng gì? | Tổng thời gian hoàn thiện báo cáo; tỷ lệ lỗi được phát hiện đúng; tỷ lệ tiêu chí rubric bị bỏ sót; số lỗi còn lại trong bản PDF cuối cùng. |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Các file DOCX/Markdown, rubric môn học, template báo cáo và quy định định dạng. |
+| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Đề xuất được chấp nhận/từ chối, lỗi người dùng phát hiện thêm, kết quả kiểm tra báo cáo cuối cùng và thời gian xử lý thực tế. |
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng:
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào:
+Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**?
+-Augment
+Bằng chứng:
+- Phát hiện nội dung có khả năng trùng lặp.
+- Đánh dấu các mục có thể thiếu theo rubric.
+- Phát hiện những đoạn thiếu liên kết.
+- Đề xuất cách diễn đạt thống nhất.
+- không tự động viết lại toàn bộ báo cáo, không xóa nội dung và không nộp bài.
 
+AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**?
+-Bỏ sót
+Vì sao, và thiết kế đã xử lý thế nào:
+Ví dụ:
+- **Báo nhầm (False Positive):** AI đánh dấu một mục là thiếu dù mục đó đã có. Người dùng cần kiểm tra thêm, gây mất thời gian.
+- **Bỏ sót (False Negative):** AI không phát hiện báo cáo thiếu một yêu cầu quan trọng trong rubric. Nhóm có thể nộp bài không đầy đủ và bị trừ điểm.
+
+Vì vậy, nhóm ưu tiên **Recall** khi kiểm tra tiêu chí bắt buộc, đồng thời yêu cầu người dùng review để hạn chế báo nhầm.
+
+Riêng đối với đề xuất chỉnh sửa văn phong, việc báo nhầm và tự ý sửa sai nội dung cũng có rủi ro lớn. Do đó, mọi thay đổi phải được người dùng xác nhận.
 ---
 
 ## 7. Problem Statement v1 + tiêu chí đánh giá (CP6)
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** | |
-| **AI intervention point** | |
-| **Mức chọn** | No AI / Rule / Workflow / Agent |
-| **Rủi ro & người kiểm tra** | |
+| **Actor** | Sinh viên phụ trách tổng hợp báo cáo nhóm, thường là nhóm trưởng hoặc người được giao hoàn thiện bài nộp của nhóm.|
+| **Quy trình** | Thành viên nộp bài theo template → Rule kiểm tra cấu trúc & định dạng cứng → AI rà soát ngữ nghĩa đối chiếu rubric & phát hiện trùng lặp ý → Người tổng hợp phê duyệt/từ chối từng đề xuất (HITL) → Xuất PDF và nộp bài. |
+| **Bottleneck** | Khâu rà soát ngữ nghĩa thủ công: phát hiện thiếu sót theo rubric, trùng lặp lập luận giữa các thành viên và thiếu liên kết mạch văn. |
+| **Impact** |  Tốn 90–120 phút/lần tổng hợp; 2/3 lần nộp sát deadline; nguy cơ bị trừ điểm trực tiếp do sót yêu cầu rubric hoặc nội dung mâu thuẫn/trùng lặp. |
+| **Success Metric** (baseline → target, cách đo) |  Thời gian 120 → < 40 phút; Recall phát hiện thiếu rubric ≥ 95%; Precision phát hiện trùng lặp ≥ 80%; không phát sinh lỗi nội dung nghiêm trọng. |
+| **Boundary** |  AI chỉ gợi ý dưới dạng cờ cảnh báo kèm lý do; tuyệt đối không tự sửa text gốc, không tự tạo dữ liệu/nguồn tham khảo, không tự nộp bài. Khi AI timeout hoặc hallucination, lập tức fallback về checklist tĩnh để người dùng review thủ công. |
+| **AI intervention point** | Sau khi file đã qua bộ lọc Rule về cấu trúc, AI nhận văn bản đã ghép để phân tích ngữ nghĩa đối chiếu với file rubric đầu vào.|
+| **Mức chọn** |  Workflow|
+| **Rủi ro & người kiểm tra** | Rủi ro AI diễn đạt lại làm sai thuật ngữ chuyên môn hoặc báo nhầm; Người tổng hợp chịu trách nhiệm kiểm tra và xác thực thông tin trước khi áp dụng. |
 
 **Thay đổi so với v0 và lý do:**
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| | | | |
+| **Bottleneck** | Gộp cả lỗi định dạng (font, heading) và rà soát nội dung. | Tách định dạng ra (đưa về Rule), chỉ giữ lại khâu rà soát ngữ nghĩa (rubric, trùng lặp ý, mạch văn). | Sau phỏng vấn kiểm chứng, nhận thấy template và rule giải quyết được 80% lỗi định dạng; điểm nghẽn thực sự tốn não và tốn thời gian là đọc hiểu đối chiếu nội dung. |
+| **Quy trình** | Quy trình thao tác thủ công tuần tự 5 bước. | Quy trình phân rã 7 bước, gắn rõ nhãn thực thi: Rule – AI – HITL. | Làm rõ trách nhiệm từng khâu; AI không ôm đồm toàn bộ mà chỉ can thiệp vào khâu phân tích ngữ nghĩa sau khi Rule đã lọc sạch định dạng. |
+| **Success Metric** | Đòi hỏi tuyệt đối: "phát hiện 100% rubric, không sai sót". | Chuyển thành các chỉ số ML định lượng: Recall ≥ 95%, Precision ≥ 80%, khống chế thời gian review < 15 phút. | Dựa trên nguyên lý Google PAIR: Với rubric bắt buộc, lỗi bỏ sót (False Negative) nguy hiểm hơn báo nhầm (False Positive) nên phải ưu tiên tối đa Recall thay vì đòi hỏi 100% hoàn hảo phi thực tế. |
+| **Boundary** | Chỉ nêu cấm AI sửa nội dung và cấm tự nộp. | Bổ sung cơ chế Fallback (quay lui về checklist thủ công) và cơ chế hiển thị gợi ý (chỉ gắn flag kèm trích dẫn đối chiếu). | Đảm bảo khi AI gặp sự cố hoặc sinh ảo giác, quy trình làm việc của nhóm không bị gián đoạn trước deadline. |
+**Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
 **Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
 | # | Tiêu chí | Đạt khi | Không đạt khi |
-|---:|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-
+|---|---|---|---|
+| 1 | **Độ bao phủ rubric (Recall)** | Phát hiện được ≥ 95% các tiêu chí bắt buộc theo rubric đã nạp vào; trích dẫn đúng vị trí đoạn văn đáp ứng hoặc chỉ rõ vị trí bị thiếu. | Bỏ sót bất kỳ tiêu chí bắt buộc nào của rubric khiến báo cáo nộp đi có nguy cơ bị trừ điểm trực tiếp. |
+| 2 | **Độ chính xác cảnh báo trùng lặp (Precision)** | ≥ 80% các đoạn văn bị gắn cờ trùng lặp thực sự bị lặp ý/nội dung lập luận giữa các thành viên. | Báo nhầm quá 20% (các đoạn chỉ trùng từ khóa chuyên ngành hoặc bổ trợ ngữ cảnh cho nhau nhưng vẫn bị gắn cờ là lặp ý). |
+| 3 | **Tính nguyên vẹn của nội dung (Factuality / Non-hallucination)** | Các gợi ý chỉnh sửa và câu nối diễn đạt giữ nguyên 100% số liệu, thuật ngữ chuyên ngành và lập luận gốc của thành viên. | Tự ý bịa thêm dữ liệu, thay đổi số liệu thực nghiệm hoặc diễn đạt lại làm sai lệch bản chất chuyên môn của bài viết. |
+| 4 | **Tính hành động được của gợi ý (Actionability)** | Mỗi cảnh báo đều đi kèm vị trí cụ thể (dòng/đoạn), lý do rõ ràng và đoạn văn bản gợi ý thay thế để người tổng hợp chỉ cần 1 click để duyệt (Accept/Reject). | Cảnh báo chung chung, không nêu rõ thiếu gì hoặc không đưa ra phương án xử lý cụ thể. |
 ---
 
 ## 8. Quyết định (CP6)
 
 ### 8.1. Bốn rủi ro
-
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | | |
-| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | | |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | | |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | | |
-
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | TB | Phỏng vấn cho thấy 2/3 người gặp khó khăn khi đối chiếu nội dung, nhưng 1/3 người dùng template tốt chỉ mất 30 phút. Nhu cầu phụ thuộc nhiều vào thói quen kỷ luật của từng nhóm. |
+| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | TB | Nếu AI báo nhầm (False Positive) hoặc đưa ra quá nhiều gợi ý vụn vặt, người tổng hợp sẽ tốn thêm thời gian đọc duyệt, gây ức chế sát deadline. |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | Thấp | Đầu vào là văn bản (DOCX/Markdown), rubric dạng text. Các mô hình LLM hiện tại hoàn toàn đủ năng lực so khớp ngữ nghĩa và trích xuất thông tin. Nhóm có đủ kỹ năng dựng workflow kết hợp Python script (Rule) và LLM API. |
+| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | Thấp | Chi phí API cho một lần chạy báo cáo rất nhỏ (< 0.1 USD); dữ liệu bài tập sinh viên không vướng bản quyền hay bảo mật dữ liệu nhạy cảm; quy định trường học không cấm dùng AI để rà soát/sửa lỗi chính tả và format. |
 ### 8.2. Kết luận
 
-**Quyết định:** Go / Not Yet / No-Go
+**Quyết định:** Not Yet 
 
 **Lý do:**
+- Chưa chứng minh được giá trị vượt trội so với No AI: Phỏng vấn thực tế cho thấy chỉ cần dùng template chung chuẩn và quy ước kỷ luật từ đầu, thời gian hoàn thiện có thể rút xuống 30 phút mà không cần can thiệp AI.
+
+- Nguyên nhân cốt lõi chưa được cô lập: Việc nộp bài sát deadline phần lớn do thành viên gửi bài muộn, công cụ AI chỉ can thiệp ở khâu cuối nên chưa chắc giải quyết được tận gốc việc trễ hạn.
+
+- Chưa có số liệu thực nghiệm đo đạc: Các con số 120 phút hay 60 phút chỉnh sửa hiện tại mới chỉ là ước tính dựa trên phỏng vấn định tính, chưa có log bấm giờ thực tế trên các bài lab cụ thể.
 
 **Nếu Go — pilot nhỏ nhất:**
 
 **Nếu Not Yet — cần kiểm chứng gì trước:**
+- Kiểm chứng Baseline (No AI): Bắt buộc các nhóm thử nghiệm áp dụng triệt để bộ Template + Quy chuẩn nộp bài thống nhất ngay từ đầu buổi làm việc. Đo xem thời gian tổng hợp thủ công thực tế giảm còn bao nhiêu phút.
+
+- Đo lường thời gian đọc duyệt : Thử nghiệm dùng AI thủ công (prompting ChatGPT/Claude trực tiếp để rà rubric và bắt trùng lặp trên 1 bài báo cáo thật) để đo xem người tổng hợp mất bao nhiêu phút để đọc, xác nhận các gợi ý đó.
+
+- Độ chính xác thực tế: Đo xem tỷ lệ AI báo nhầm trùng lặp và bỏ sót tiêu chí rubric trên mẫu thật có đạt ngưỡng Recall ≥ 95% và Precision ≥ 80% hay không.
 
 **Nếu No-Go — nên làm gì thay AI:**
 
 **Ngưỡng dừng** (nếu sau … mà … thì quay về …):
-
----
+- Nếu sau 03 lần thử nghiệm ở các bài Lab tiếp theo, việc áp dụng Template chuẩn + Checklist thủ công đã giúp giảm thời gian tổng hợp xuống < 45 phút/lần và không bị trừ điểm rubric/định dạng, thì nhóm sẽ quay về giải pháp No AI (tối ưu quy trình).
 
 ## 9. Hạn chế và hướng tiếp theo
 
--
+- Cỡ mẫu phỏng vấn kiểm chứng còn nhỏ (3 mẫu mô phỏng), chủ yếu mang tính định tính và giả định, chưa có dữ liệu đo lường log thời gian thực tế qua nhiều đồ án khác nhau.
+
+- Chưa phân tách triệt để được thời gian trễ do thành viên và thời gian tổng hợp, rà soát thông tin,
+
+- Hoàn thiện bộ quy chuẩn template nội bộ làm tài liệu bàn giao trước khi quyết định có code thử nghiệm tính năng tự động hóa hay không.
 
 ## 10. Tài liệu tham khảo
 
--
+- The Mom Test — Rob Fitzpatrick (https://www.momtestbook.com/)
+- Testing Business Ideas — Strategyzer (https://www.strategyzer.com/library/testing-business-ideas-book-summary)
+- ow to Test Your Idea — Strategyzer (https://www.strategyzer.com/library/how-to-test-your-idea-start-with-the-most-critical-hypotheses)
+- Google PAIR (People + AI Research) (2019). People + AI Guidebook: Designing human-centered AI products. Google LLC. Truy cập tại: https://pair.withgoogle.com/guidebook
+- Google Support (2024). Add a title, heading, or table of contents in a document. Google Docs Help. Truy cập tại: https://support.google.com/docs/answer/116338
+- Microsoft Support (2024). Compare and merge two versions of a document. Microsoft Support. Truy cập tại: https://support.microsoft.com/en-us/word/compare-and-merge-two-versions-of-a-document
+- Zotero Documentation (2024). Word Processor Integration. Zotero. Truy cập tại: https://www.zotero.org/support/word_processor_integration
