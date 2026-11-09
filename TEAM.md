@@ -13,7 +13,7 @@
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
 | 1 | Vũ Xuân Bách | 2A202603803 | Trưởng nhóm | bachvx1709 |
-| 2 | | | | |
+| 2 |Nguyễn Duy Mạnh |2A202603806 |Thành viên |hnamyud |
 | 3 |Đỗ Triệu Đức Phương |2A202603843|Thành viên  | ducphuong2005| 
 
 Không ghi email hay số điện thoại vào bảng này, vì repo có thể để public.
@@ -87,3 +87,34 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Biết cách thảo luận nhóm bằng câu hỏi phản biện thực tế, tránh sa đà vào tranh cãi cảm tính, đưa ra quyết định dựa trên dữ liệu/chỉ số đo lường.
 - Hiểu sâu sắc rằng AI không giải quyết mọi khâu, chìa khóa thành công nằm ở việc bóc tách và hiểu bài toán Rule, Workflow hay Agent và luôn cần Human-in-the-loop.
 - Nắm được cách hiểu vấn đề, đánh giá vấn đề và quyết định có nên áp dụng AI vào vấn đề đó không.
+
+### Nguyễn Duy Mạnh - 2A202603806
+
+**Phần việc phụ trách:**
+
+- Đề xuất và phân tích các vấn đề cá nhân trong CP1–CP2.
+- Tham gia phản biện, phân nhóm và lựa chọn problem chính ở CP3.
+- Nghiên cứu các giải pháp hiện có và đánh giá mức độ cần thiết của AI.
+- Đóng góp xây dựng quy trình Before/After, Problem Statement và đánh giá rủi ro để đưa ra quyết định cuối cùng.
+
+
+**Đóng góp cụ thể (mình đã làm gì, ra sản phẩm gì):**
+
+- Tự xác định các vấn đề trong quá trình học tập và lập trình; xây dựng 3 Problem Cards về tìm lại cách sửa lỗi lập trình, tổng hợp tin tức công nghệ và theo dõi tiến độ nhóm, kèm Job Story, bottleneck, impact và success metric.
+- Đề xuất câu hỏi phản biện về việc sử dụng template thống nhất để giảm thời gian chuẩn hóa báo cáo, giúp nhóm xem xét giải pháp không dùng AI.
+- Tham gia phân loại 9 candidate thành các cluster, so sánh và lựa chọn bài toán "Chuẩn hóa báo cáo nhóm trước deadline".
+- Tìm hiểu Google Docs, Microsoft Word và Zotero để xác định những chức năng đã có sẵn, từ đó đề xuất thu hẹp phạm vi giải pháp.
+- Hỗ trợ xây dựng quy trình trước/sau, phân chia các bước Rule, AI và Human Review; xác định boundary và phương án fallback.
+- Đóng góp đánh giá 4 mức No AI / Rule / Workflow / Agent và đề xuất lựa chọn Workflow có AI hỗ trợ, với quyết định NOT YET do chưa đủ bằng chứng kiểm chứng.
+
+
+
+**Bằng chứng (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):**
+
+- `group_report.md` — Mục CP5: Sơ đồ quy trình Before/After, bảng so sánh metric và Problem Statement v0.
+- `group_report.md` — Mục CP6: Bảng so sánh mức can thiệp AI, Problem Statement v1, đánh giá rủi ro và quyết định NOT YET.
+- Commit Git: 0499cbb184ff121c5036d6a963475b57c2dd1ee1.
+
+**Điều mình học được từ phần nhóm:**
+
+Qua quá trình làm việc nhóm, tôi hiểu rằng việc phát triển một sản phẩm cần bắt đầu từ vấn đề thực tế và bằng chứng đo lường được, thay vì lựa chọn công nghệ trước. Tôi học được cách viết Job Story, xác định bottleneck, phân tích tác động và phản biện các giả định của một problem. Đặc biệt, tôi nhận ra không phải vấn đề nào cũng cần sử dụng AI; nhiều công việc có thể giải quyết hiệu quả bằng template, Rule hoặc Workflow thông thường. Việc nghiên cứu các công cụ hiện có giúp tôi hiểu tầm quan trọng của việc tránh xây dựng lại những tính năng đã tồn tại. Cuối cùng, tôi học được cách đánh giá rủi ro, thiết lập boundary và Human-in-the-loop, đồng thời biết lựa chọn NOT YET khi chưa có đủ bằng chứng để triển khai.
